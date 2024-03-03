@@ -40,6 +40,11 @@ const local_quotes = [
     author: 'Margaret Sangster',
   },
   {
+    text: `If you're going to try, go all the way. Otherwise, don't even
+  start.`,
+    author: 'Charles Bukowski',
+  },
+  {
     text: 'Peace comes from within. Do not seek it without.',
     author: 'Buddha',
   },
