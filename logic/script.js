@@ -4,11 +4,25 @@ const quote_text = document.getElementById('quote');
 const author_text = document.getElementById('author');
 const x_btn = document.getElementById('twitter');
 const new_quote_btn = document.getElementById('new-quote');
+const loader = document.getElementById('loader');
 
 let apiQuotes = [];
 
+// Show loading
+const loading = function () {
+  loader.hidden = false;
+  quote_container.hidden = true;
+};
+
+// Hide loading
+const complete_loading = function () {
+  quote_container.hidden = false;
+  loader.hidden = true;
+};
+
 // Show new function
 const new_quote = function () {
+  loading();
   const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
   if (!quote.character.name) {
     author_text.textContent = 'Unknown';
@@ -20,11 +34,14 @@ const new_quote = function () {
   } else {
     quote_text.classList.remove('long-quote');
   }
+  // Set quote, Hide loader
   quote_text.textContent = quote.sentence;
+  complete_loading();
 };
 
 // Get Quotes from API
 async function get_quotes() {
+  loading();
   const api_url = 'https://api.gameofthronesquotes.xyz/v1/random/3';
   try {
     const response = await fetch(api_url);

@@ -18,25 +18,29 @@
     <script src="./logic/quotes.js" defer></script>
   </head>
   <body>
-    <main class="quote-container" id="quote-container">
-      <!-- Quote -->
-      <section class="quote-text">
-        <i class="fa-sharp fa-solid fa-quote-left"></i>
-        <span id="quote"></span>
-      </section>
+    <main>
+      <section class="quote-container" id="quote-container">
+        <!-- Quote -->
+        <section class="quote-text">
+          <i class="fa-sharp fa-solid fa-quote-left"></i>
+          <span id="quote"></span>
+        </section>
 
-      <!-- Author -->
-      <section class="quote-author">
-        <span id="author"></span>
-      </section>
+        <!-- Author -->
+        <section class="quote-author">
+          <span id="author"></span>
+        </section>
 
-      <!-- Buttons -->
-      <section class="btn-container">
-        <button class="twitter-btn" id="twitter" title="Tweet this!">
-          <i class="fa-brands fa-x-twitter"></i>
-        </button>
-        <button id="new-quote">New Quote</button>
+        <!-- Buttons -->
+        <section class="btn-container">
+          <button class="twitter-btn" id="twitter" title="Tweet this!">
+            <i class="fa-brands fa-x-twitter"></i>
+          </button>
+          <button id="new-quote">New Quote</button>
+        </section>
       </section>
+      <!-- Loader -->
+      <div class="loader" id="loader"></div>
     </main>
     <footer>
       <p class="copy-right">
