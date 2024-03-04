@@ -24,25 +24,25 @@ const complete_loading = function () {
 const new_quote = function () {
   loading();
   const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
-  if (!quote.character.name) {
-    author_text.textContent = 'Unknown';
+  if (!quote.author) {
+    author_text.textContent = '- Unknown';
   } else {
-    author_text.textContent = quote.character.name;
+    author_text.textContent = `- ${quote.author}`;
   }
-  if (quote.sentence.length > 100) {
+  if (quote.content.length > 100) {
     quote_text.classList.add('long-quote');
   } else {
     quote_text.classList.remove('long-quote');
   }
   // Set quote, Hide loader
-  quote_text.textContent = quote.sentence;
+  quote_text.textContent = quote.content;
   complete_loading();
 };
 
 // Get Quotes from API
 async function get_quotes() {
   loading();
-  const api_url = 'https://api.gameofthronesquotes.xyz/v1/random/3';
+  const api_url = 'https://api.quotable.io/quotes/random?limit=5';
   try {
     const response = await fetch(api_url);
     apiQuotes = await response.json();
