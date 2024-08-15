@@ -29,13 +29,13 @@ const new_quote = function () {
   } else {
     author_text.textContent = `- ${quote.author}`;
   }
-  if (quote.content.length > 100) {
+  if (quote.text.length > 100) {
     quote_text.classList.add('long-quote');
   } else {
     quote_text.classList.remove('long-quote');
   }
   // Set quote, Hide loader
-  quote_text.textContent = quote.content;
+  quote_text.textContent = quote.text;
   complete_loading();
 };
 
@@ -49,6 +49,7 @@ async function get_quotes() {
     new_quote();
   } catch (error) {
     // Catch error here
+    console.log(error);
   }
 }
 
