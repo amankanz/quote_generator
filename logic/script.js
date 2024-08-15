@@ -42,7 +42,7 @@ const new_quote = function () {
 // Get Quotes from API
 async function get_quotes() {
   loading();
-  const api_url = 'https://api.quotable.io/quotes/random?limit=5';
+  const api_url = 'https://type.fit/api/quotes';
   try {
     const response = await fetch(api_url);
     apiQuotes = await response.json();
