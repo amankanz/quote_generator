@@ -6,8 +6,6 @@ const x_btn = document.getElementById('twitter');
 const new_quote_btn = document.getElementById('new-quote');
 const loader = document.getElementById('loader');
 
-let apiQuotes = [];
-
 // Show loading
 const loading = function () {
   loader.hidden = false;
@@ -23,32 +21,31 @@ const complete_loading = function () {
 // Show new function
 const new_quote = function () {
   loading();
-  const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
   if (!quote.author) {
     author_text.textContent = '- Unknown';
   } else {
     author_text.textContent = `- ${quote.author}`;
   }
-  if (quote.text.length > 100) {
+  if (quote.quote.length > 100) {
     quote_text.classList.add('long-quote');
   } else {
     quote_text.classList.remove('long-quote');
   }
   // Set quote, Hide loader
-  quote_text.textContent = quote.text;
+  quote_text.textContent = quote.quote;
   complete_loading();
 };
 
 // Get Quotes from API
 async function get_quotes() {
   loading();
-  const api_url = 'https://type.fit/api/quotes';
+  const api_url = 'https://quotes-api-self.vercel.app/quote';
   try {
     const response = await fetch(api_url);
-    apiQuotes = await response.json();
+    quote = await response.json();
+    console.log(quote);
     new_quote();
   } catch (error) {
-    // Catch error here
     console.log(error);
   }
 }
